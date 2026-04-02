@@ -57,6 +57,7 @@
 
         <!-- E-MAIL -->
         <EditText
+            android:id="@+id/editEmail"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:hint="Digite seu E-mail"
@@ -68,6 +69,7 @@
 
         <!-- SENHA -->
         <EditText
+            android:id="@+id/editSenha"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:hint="Digite sua Senha"
@@ -80,6 +82,7 @@
 
         <!-- BOTÃO -->
         <Button
+            android:id="@+id/btnLogin"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:text="Entrar"
