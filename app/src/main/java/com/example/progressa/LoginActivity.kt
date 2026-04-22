@@ -14,6 +14,11 @@ import android.widget.Toast
 import com.example.progressa.model.LoginRequest
 import com.example.progressa.network.RetrofitClient
 
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import com.example.progressa.model.LoginResponse
+
 class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,13 +42,35 @@ class LoginActivity : AppCompatActivity() {
 
             val request = LoginRequest(email, senha)
 
-            val response = RetrofitClient.instance.login(request)
+            val call = RetrofitClient.instance.login(request)
 
-            if (response.success) {
-                Toast.makeText(this, "Login OK!", Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(this, "Email ou senha inválidos", Toast.LENGTH_SHORT).show()
-            }
+            call.enqueue(object : Callback<LoginResponse> {
+
+                override fun onResponse(
+                    call: Call<LoginResponse>,
+                    response: Response<LoginResponse>
+                ) {
+                    if (response.isSuccessful) {
+
+                        val body = response.body()
+
+                        if (body?.success == true) {
+                            Toast.makeText(this@LoginActivity, "Login OK!", Toast.LENGTH_SHORT).show()
+
+                            // 👉 aqui depois podemos ir pra outra tela
+
+                        } else {
+                            Toast.makeText(this@LoginActivity, body?.message ?: "Erro", Toast.LENGTH_SHORT).show()
+                        }
+                    } else {
+                        Toast.makeText(this@LoginActivity, "Erro na resposta", Toast.LENGTH_SHORT).show()
+                    }
+                }
+
+                override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+                    Toast.makeText(this@LoginActivity, "Erro de conexão: ${t.message}", Toast.LENGTH_LONG).show()
+                }
+            })
         }
 
         val inicio = texto.indexOf("Crie agora")

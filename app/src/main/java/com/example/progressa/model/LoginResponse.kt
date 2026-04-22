@@ -1,4 +1,3 @@
-
 package com.example.progressa.model
 
 data class LoginResponse(
