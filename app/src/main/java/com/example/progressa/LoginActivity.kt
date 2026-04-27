@@ -1,23 +1,21 @@
 package com.example.progressa
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
-import android.widget.TextView
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 
-import android.widget.EditText
-import android.widget.Button
-import android.widget.Toast
 import com.example.progressa.model.LoginRequest
+import com.example.progressa.model.LoginResponse
 import com.example.progressa.network.RetrofitClient
 
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import com.example.progressa.model.LoginResponse
 
 class LoginActivity : AppCompatActivity() {
 
@@ -26,22 +24,31 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         val textCadastro = findViewById<TextView>(R.id.textCadastro)
-
-        val texto = "Ainda não tem uma conta? Crie agora"
-
-        val spannable = SpannableString(texto)
-
         val editEmail = findViewById<EditText>(R.id.editEmail)
         val editSenha = findViewById<EditText>(R.id.editSenha)
         val btnLogin = findViewById<Button>(R.id.btnLogin)
 
+        val texto = "Ainda não tem uma conta? Crie agora"
+        val spannable = SpannableString(texto)
+
+        // 👉 Clique para ir para cadastro
+        textCadastro.setOnClickListener {
+            val intent = Intent(this, CadastroActivity::class.java)
+            startActivity(intent)
+        }
+
+        // 👉 Clique no botão login
         btnLogin.setOnClickListener {
 
             val email = editEmail.text.toString()
             val senha = editSenha.text.toString()
 
-            val request = LoginRequest(email, senha)
+            if (email.isEmpty() || senha.isEmpty()) {
+                Toast.makeText(this, "Preencha todos os campos!", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
 
+            val request = LoginRequest(email, senha)
             val call = RetrofitClient.instance.login(request)
 
             call.enqueue(object : Callback<LoginResponse> {
@@ -55,13 +62,18 @@ class LoginActivity : AppCompatActivity() {
                         val body = response.body()
 
                         if (body?.success == true) {
+
                             Toast.makeText(this@LoginActivity, "Login OK!", Toast.LENGTH_SHORT).show()
 
-                            // 👉 aqui depois podemos ir pra outra tela
+                            val intent = Intent(this@LoginActivity, HomeActivity::class.java)
+                            intent.putExtra("nome", "Usuário") // depois melhoramos isso
+                            startActivity(intent)
+                            finish()
 
                         } else {
                             Toast.makeText(this@LoginActivity, body?.message ?: "Erro", Toast.LENGTH_SHORT).show()
                         }
+
                     } else {
                         Toast.makeText(this@LoginActivity, "Erro na resposta", Toast.LENGTH_SHORT).show()
                     }
@@ -73,6 +85,7 @@ class LoginActivity : AppCompatActivity() {
             })
         }
 
+        // 👉 Estilo do texto "Crie agora"
         val inicio = texto.indexOf("Crie agora")
 
         spannable.setSpan(
