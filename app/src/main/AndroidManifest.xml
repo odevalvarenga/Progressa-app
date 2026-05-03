@@ -13,7 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Progressa"
-        android:usesCleartextTraffic="true" >
+        android:usesCleartextTraffic="true"
+        android:clickable="true"
+        android:focusable="true" >
 
         <activity
             android:name=".LoginActivity"
@@ -25,8 +27,19 @@
         </activity>
 
         <activity android:name=".CadastroActivity" android:exported="false" />
+<<<<<<< HEAD
         <activity android:name=".HomeActivity" android:exported="false" />
         <activity android:name=".MainActivity" android:exported="false" />
+=======
+        <!-- MAIN FICA NORMAL (SEM LAUNCHER) -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+
+        <activity android:name=".HomeActivity"/>
+
+
+>>>>>>> 5920cf1a987e500162325b48e821ae3d1c6d23f8
 
     </application>
 
