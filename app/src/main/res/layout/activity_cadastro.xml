@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_login"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#80000000"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <ImageView
+                android:layout_width="160dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:src="@drawable/logo_progressa"
+                android:layout_marginBottom="24dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Cadastre-se"
+                android:textColor="#FFFFFF"
+                android:textSize="28sp"
+                android:textStyle="bold|italic"
+                android:layout_marginBottom="24dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nome"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:layout_marginBottom="4dp"/>
+            <EditText
+                android:id="@+id/editNome"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:hint="Digite seu nome"
+                android:drawableStart="@drawable/ic_pessoa"
+                android:drawablePadding="12dp"
+                android:textColorHint="#757575"
+                android:textColor="#FFFFFF"
+                android:paddingStart="16dp"
+                android:background="@drawable/bg_input_rounded"
+                android:layout_marginBottom="16dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="E-mail"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:layout_marginBottom="4dp"/>
+            <EditText
+                android:id="@+id/editEmail"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:hint="Digite seu E-mail"
+                android:drawableStart="@drawable/ic_email"
+                android:drawablePadding="12dp"
+                android:textColorHint="#757575"
+                android:textColor="#FFFFFF"
+                android:paddingStart="16dp"
+                android:background="@drawable/bg_input_rounded"
+                android:layout_marginBottom="16dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Senha"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:layout_marginBottom="4dp"/>
+            <EditText
+                android:id="@+id/editSenha"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:hint="Crie sua Senha"
+                android:inputType="textPassword"
+                android:drawableStart="@drawable/ic_lock"
+                android:drawablePadding="12dp"
+                android:textColorHint="#757575"
+                android:textColor="#FFFFFF"
+                android:paddingStart="16dp"
+                android:background="@drawable/bg_input_rounded"
+                android:layout_marginBottom="16dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Confirme sua senha"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:layout_marginBottom="4dp"/>
+            <EditText
+                android:id="@+id/editConfirmarSenha"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:hint="Confirme sua Senha"
+                android:inputType="textPassword"
+                android:drawableStart="@drawable/ic_check"
+                android:drawablePadding="12dp"
+                android:textColorHint="#757575"
+                android:textColor="#FFFFFF"
+                android:paddingStart="16dp"
+                android:background="@drawable/bg_input_rounded"
+                android:layout_marginBottom="24dp"/>
+
+            <Button
+                android:id="@+id/btnCriarConta"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="Criar Conta"
+                android:background="@drawable/bg_botao_primario"
+                app:backgroundTint="@null"
+                android:textColor="#FFFFFF"
+                android:textAllCaps="false"
+                android:layout_marginBottom="12dp"/>
+
+            <Button
+                android:id="@+id/btnLoginRedirect"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="Já tem conta? Logue agora!"
+                android:background="@drawable/bg_botao_secundario"
+                app:backgroundTint="@null"
+                android:textColor="#FFFFFF"
+                android:textAllCaps="false"/>
+
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

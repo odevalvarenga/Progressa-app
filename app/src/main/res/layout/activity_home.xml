@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_login">
+
+    <!-- MENU -->
+    <ImageButton
+        android:id="@+id/btnMenu"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_margin="16dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Menu"
+        android:src="@drawable/ic_menu"
+        app:tint="#FFFFFF"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- PERFIL -->
+    <FrameLayout
+        android:id="@+id/profileContainer"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/bg_circle_profile"
+        android:backgroundTint="#408B5CF6"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+            android:layout_width="85dp"
+            android:layout_height="85dp"
+            android:layout_gravity="center"
+            android:contentDescription="Foto de perfil"
+            android:src="@drawable/ic_pessoa"
+            app:tint="#FFFFFF" />
+    </FrameLayout>
+
+    <!-- NOME -->
+    <TextView
+        android:id="@+id/tvWelcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Olá Noah"
+        android:textColor="#FFFFFF"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/profileContainer"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- LOCAL -->
+    <LinearLayout
+        android:id="@+id/llLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="4dp"
+        app:layout_constraintTop_toBottomOf="@id/tvWelcome"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:src="@drawable/ic_location"
+            app:tint="#FFFFFF" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="São Paulo, SP"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:layout_marginStart="6dp"/>
+    </LinearLayout>
+
+    <!-- DIVISOR -->
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="#60FFFFFF"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        app:layout_constraintTop_toBottomOf="@id/llLocation"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- GRID -->
+    <LinearLayout
+        android:id="@+id/gridContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@id/llLocation"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- LINHA 1 -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!-- MATÉRIAS -->
+            <LinearLayout
+                android:layout_width="95dp"
+                android:layout_height="105dp"
+                android:layout_margin="8dp"
+                android:background="@drawable/bg_home_card"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:src="@drawable/ic_materias" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Matérias"
+                    android:textColor="#FFFFFF"
+                    android:textSize="13sp"/>
+            </LinearLayout>
+
+            <!-- LEITURA -->
+            <LinearLayout
+                android:id="@+id/cardLeitura"
+                android:layout_width="95dp"
+                android:layout_height="105dp"
+                android:layout_margin="8dp"
+                android:background="@drawable/bg_home_card"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:src="@drawable/ic_leitura" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Leitura"
+                    android:textColor="#FFFFFF"
+                    android:textSize="13sp"/>
+            </LinearLayout>
+
+            <!-- HIDRATAÇÃO -->
+            <LinearLayout
+                android:layout_width="95dp"
+                android:layout_height="105dp"
+                android:layout_margin="8dp"
+                android:background="@drawable/bg_home_card"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:src="@drawable/ic_hidratacao" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hidratação"
+                    android:textColor="#FFFFFF"
+                    android:textSize="13sp"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- LINHA 2 -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!-- BOLETIM -->
+            <LinearLayout
+                android:layout_width="95dp"
+                android:layout_height="105dp"
+                android:layout_margin="8dp"
+                android:background="@drawable/bg_home_card"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:src="@drawable/ic_boletim" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Boletim"
+                    android:textColor="#FFFFFF"
+                    android:textSize="13sp"/>
+            </LinearLayout>
+
+            <!-- CONQUISTAS -->
+            <LinearLayout
+                android:layout_width="95dp"
+                android:layout_height="105dp"
+                android:layout_margin="8dp"
+                android:background="@drawable/bg_home_card"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:src="@drawable/ic_conquistas" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Conquistas"
+                    android:textColor="#FFFFFF"
+                    android:textSize="13sp"/>
+            </LinearLayout>
+
+            <!-- ESTUDAR -->
+            <LinearLayout
+                android:layout_width="95dp"
+                android:layout_height="105dp"
+                android:layout_margin="8dp"
+                android:background="@drawable/bg_home_card"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:src="@drawable/ic_estudar" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Estudar"
+                    android:textColor="#FFFFFF"
+                    android:textSize="13sp"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
