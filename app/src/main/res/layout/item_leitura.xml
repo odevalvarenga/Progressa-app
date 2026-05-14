@@ -4,7 +4,7 @@
     android:orientation="vertical"
     android:padding="16dp"
     android:layout_margin="12dp"
-    android:background="@drawable/bg_home_card"
+    android:background="@drawable/bg_card_leitura"
     android:layout_gravity="center_vertical">
 
     <TextView
