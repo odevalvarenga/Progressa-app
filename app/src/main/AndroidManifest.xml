@@ -29,6 +29,9 @@
 
         <activity android:name=".network.LeituraActivity"/>
 
+        <activity
+            android:name=".network.MateriaActivity"/>
+
     </application>
 
 </manifest>

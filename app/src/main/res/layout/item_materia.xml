@@ -1,103 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:background="@drawable/bg_card_materia"
-    android:layout_marginBottom="16dp"
-    android:layout_marginHorizontal="24dp">
+    android:layout_margin="20dp"
+
+    android:backgroundTint="#00000000">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:background="@drawable/bg_card_leitura"
+        android:padding="20dp">
 
         <TextView
-            android:id="@+id/txtNomeMateria"
-            android:layout_width="match_parent"
+            android:id="@+id/txtNome"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nome da materia"
+            android:text="📚 Kotlin/Mobile"
             android:textColor="#FFFFFF"
-            android:textSize="18sp"
             android:textStyle="bold"
-            android:gravity="center"
-            android:layout_marginBottom="16dp"/>
+            android:textSize="24sp"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginBottom="8dp">
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Professor"
-                android:textColor="#FFFFFF"
-                android:textStyle="bold"/>
-            <TextView
-                android:id="@+id/txtNomeProfessor"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Nome do professor"
-                android:textColor="#CCCCCC"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginBottom="8dp">
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Nota das Provas"
-                android:textColor="#FFFFFF"
-                android:textStyle="bold"/>
-            <TextView
-                android:id="@+id/txtNotas"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="---"
-                android:textColor="#CCCCCC"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Média das Notas"
-                android:textColor="#FFFFFF"
-                android:textStyle="bold"/>
-            <TextView
-                android:id="@+id/txtMedia"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="---"
-                android:textColor="#CCCCCC"/>
-        </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/bg_anotacoes_materia"
-        android:padding="16dp"
-        android:minHeight="100dp">
 
         <TextView
-            android:id="@+id/txtAnotacoes"
+            android:id="@+id/txtProfessor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="👨‍🏫 Marcelo Andrade"
+            android:textColor="#FFFFFF"/>
+
+
+        <TextView
+            android:id="@+id/txtNotas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="📝 N1: 9,5 | N2: 6,5"
+            android:textColor="#FFFFFF"/>
+
+
+        <TextView
+            android:id="@+id/txtTrabalhos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="📌 Trabalhos: 10"
+            android:textColor="#FFFFFF"/>
+
+
+        <TextView
+            android:id="@+id/txtMedia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="📊 Média: 8,5"
+            android:textColor="#FFFFFF"/>
+
+
+        <ProgressBar
+            android:id="@+id/progressMateria"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="8dp"
+            android:layout_marginTop="12dp"
+            android:progress="80"/>
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:layout_marginTop="20dp"
+            android:background="#33000000">
+
+            <TextView
+                android:id="@+id/txtCronograma"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="12dp"
+                android:textColor="#FFFFFF"
+                android:text="Cronograma:
+
+Prova N1: 21/03/2030
+
+Prova N2: 04/05/2030
+
+Entrega trabalho:
+22/05/2030"/>
+
+        </ScrollView>
+
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Faça suas Anotações"
-            android:textColor="#888888"
-            android:textSize="14sp"/>
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+
+            <Button
+                android:id="@+id/btnEditar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="✏️"
+                android:background="@drawable/bg_botao"
+                android:textColor="#FFFFFF"/>
+
+
+            <Button
+                android:id="@+id/btnExcluir"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="10dp"
+                android:text="🗑️"
+                android:background="@drawable/bg_botao"
+                android:textColor="#FFFFFF"/>
+
+        </LinearLayout>
+
     </LinearLayout>
 
-</LinearLayout>
+</androidx.cardview.widget.CardView>

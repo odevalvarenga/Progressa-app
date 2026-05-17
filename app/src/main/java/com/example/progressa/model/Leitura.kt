@@ -2,6 +2,8 @@ package com.example.progressa.model
 
 data class Leitura(
 
+    val id:Int,
+
     val livro:String,
 
     val autor:String,
@@ -12,8 +14,7 @@ data class Leitura(
 
     val paginaAtual:String,
 
-    val progresso:Int,
+    var progresso:Int,
 
-    val anotacao:String
-
+    var anotacao:String
 )
