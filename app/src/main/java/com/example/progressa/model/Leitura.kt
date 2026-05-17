@@ -1,8 +1,19 @@
 package com.example.progressa.model
 
 data class Leitura(
-    val nomeMateria: String,
-    val professor: String,
-    val nota: String,
-    val media: String
+
+    val livro:String,
+
+    val autor:String,
+
+    val inicio:String,
+
+    val termino:String,
+
+    val paginaAtual:String,
+
+    val progresso:Int,
+
+    val anotacao:String
+
 )

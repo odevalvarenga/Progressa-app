@@ -27,7 +27,7 @@
         <!-- ⚠️ REMOVE se não existir -->
         <!-- <activity android:name=".MainActivity"/> -->
 
-        <activity android:name=".LeituraActivity" />
+        <activity android:name=".network.LeituraActivity"/>
 
     </application>
 

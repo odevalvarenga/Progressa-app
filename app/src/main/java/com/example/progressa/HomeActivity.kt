@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 
 import android.content.Intent
 import android.widget.LinearLayout
+import com.example.progressa.network.LeituraActivity
 
 class HomeActivity : AppCompatActivity() {
 
@@ -15,7 +16,12 @@ class HomeActivity : AppCompatActivity() {
         val cardLeitura = findViewById<LinearLayout>(R.id.cardLeitura)
 
         cardLeitura.setOnClickListener {
-            val intent = Intent(this, LeituraActivity::class.java)
+            val intent =
+                Intent(
+                    this,
+                    LeituraActivity::class.java
+                )
+
             startActivity(intent)
         }
     }

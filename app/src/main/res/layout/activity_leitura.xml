@@ -6,6 +6,28 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg_leitura">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="16dp">
+
+        <ImageButton
+            android:id="@+id/btnVoltar"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:background="@drawable/bg_home_card"
+            android:src="@drawable/ic_voltar"/>
+
+        <ImageView
+            android:layout_width="180dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="20dp"
+            android:src="@drawable/logo_progressa"/>
+
+    </LinearLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerLeitura"
         android:layout_width="0dp"
