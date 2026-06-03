@@ -2,19 +2,20 @@ package com.example.progressa.model
 
 data class Materia(
 
-    val id:Int,
+    val id: Int,
 
-    var nome:String,
+    var nome: String,
 
-    var professor:String,
+    var professor: String,
 
-    var n1:String,
+    var nota1: Double,
 
-    var n2:String,
+    var nota2: Double,
 
-    var trabalhos:String,
+    var trabalhos: Double,
 
-    var media:String,
+    var media: Double,
 
-    var cronograma:String
+    var cronograma: String
+
 )

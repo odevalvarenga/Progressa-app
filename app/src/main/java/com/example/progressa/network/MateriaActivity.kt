@@ -20,65 +20,59 @@ class MateriaActivity : AppCompatActivity() {
             R.layout.activity_materias
         )
 
-
         val voltar =
             findViewById<ImageButton>(
                 R.id.btnVoltar
             )
 
-        voltar.setOnClickListener{
+        voltar.setOnClickListener {
             finish()
         }
-
 
         val recycler =
             findViewById<RecyclerView>(
                 R.id.recyclerMateria
             )
 
-
         val lista = mutableListOf(
 
             Materia(
-                id=1,
-                nome="Kotlin/Mobile",
-                professor="Marcelo Andrade",
-                n1="9,5",
-                n2="6,5",
-                trabalhos="10",
-                media="8,5",
-
-                cronograma=
+                id = 1,
+                nome = "Kotlin/Mobile",
+                professor = "Marcelo Andrade",
+                nota1 = 9.5,
+                nota2 = 6.5,
+                trabalhos = 10.0,
+                media = (9.5 + 6.5 + 10.0) / 3,
+                cronograma =
                     """
                 Prova N1: 21/03/2030
-                
+
                 Prova N2: 04/05/2030
-                
+
                 Entrega trabalho:
                 22/05/2030
                 """.trimIndent()
             ),
 
             Materia(
-                id=2,
-                nome="Banco de Dados",
-                professor="Carlos Silva",
-                n1="8",
-                n2="10",
-                trabalhos="9",
-                media="9",
-
-                cronograma=
+                id = 2,
+                nome = "Banco de Dados",
+                professor = "Carlos Silva",
+                nota1 = 8.0,
+                nota2 = 10.0,
+                trabalhos = 9.0,
+                media = (8.0 + 10.0 + 9.0) / 3,
+                cronograma =
                     """
                 Projeto: 25/04
-                
+
                 Apresentação:
                 01/05
                 """.trimIndent()
             )
 
         )
-
 
         recycler.layoutManager =
             LinearLayoutManager(
@@ -92,19 +86,16 @@ class MateriaActivity : AppCompatActivity() {
         recycler.adapter =
             MateriaAdapter(lista)
 
-
         findViewById<android.widget.Button>(
             R.id.btnNovaMateria
-        )
-            .setOnClickListener{
+        ).setOnClickListener {
 
-                Toast.makeText(
-                    this,
-                    "Adicionar matéria",
-                    Toast.LENGTH_SHORT
-                ).show()
+            Toast.makeText(
+                this,
+                "Adicionar matéria",
+                Toast.LENGTH_SHORT
+            ).show()
 
-            }
-
+        }
     }
 }
