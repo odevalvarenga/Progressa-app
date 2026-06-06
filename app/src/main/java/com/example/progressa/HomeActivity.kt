@@ -7,6 +7,7 @@ import android.widget.LinearLayout
 
 import com.example.progressa.network.LeituraActivity
 import com.example.progressa.network.MateriaActivity
+import com.example.progressa.network.EstudoActivity
 
 class HomeActivity : AppCompatActivity() {
 
@@ -49,6 +50,20 @@ class HomeActivity : AppCompatActivity() {
                 )
 
             startActivity(intent)
+        }
+        val cardEstudar =
+            findViewById<LinearLayout>(
+                R.id.cardEstudar
+            )
+
+        cardEstudar.setOnClickListener {
+
+            startActivity(
+                Intent(
+                    this,
+                    EstudoActivity::class.java
+                )
+            )
         }
     }
 }
