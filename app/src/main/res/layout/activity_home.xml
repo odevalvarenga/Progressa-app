@@ -159,6 +159,7 @@
 
             <!-- HIDRATAÇÃO -->
             <LinearLayout
+                android:id="@+id/cardHidratacao"
                 android:layout_width="95dp"
                 android:layout_height="105dp"
                 android:layout_margin="8dp"
