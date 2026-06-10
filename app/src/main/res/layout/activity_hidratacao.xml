@@ -30,9 +30,10 @@
         <ImageView
             android:layout_width="140dp"
             android:layout_height="40dp"
-            android:src="@drawable/logo_progressa"
+            android:layout_centerInParent="true"
             android:scaleType="fitCenter"
-            android:layout_centerInParent="true"/>
+            android:src="@drawable/logo_progressa"/>
+
     </RelativeLayout>
 
     <TextView
@@ -109,6 +110,7 @@
                 android:textColor="#FFFFFF"
                 android:textSize="32sp"
                 android:layout_marginTop="8dp"/>
+
         </LinearLayout>
 
         <LinearLayout
@@ -133,7 +135,9 @@
                 android:text="+"
                 android:textColor="#FFFFFF"
                 android:textSize="40sp"/>
+
         </LinearLayout>
+
     </LinearLayout>
 
     <EditText
