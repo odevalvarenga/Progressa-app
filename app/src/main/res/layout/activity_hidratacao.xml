@@ -21,18 +21,19 @@
             android:textSize="24sp"
             android:textStyle="bold"
             android:gravity="center"
+            android:includeFontPadding="false"
+            android:paddingBottom="4dp"
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
             android:clickable="true"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Progressa"
-            android:textColor="#FFFFFF"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:layout_centerInParent="true"/>
+        <ImageView
+            android:layout_width="140dp"
+            android:layout_height="40dp"
+            android:layout_centerInParent="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/logo_progressa"/>
+
     </RelativeLayout>
 
     <TextView
@@ -93,12 +94,14 @@
             android:background="@drawable/fundo_translucido"
             android:gravity="center"
             android:clickable="true"
-            android:layout_marginEnd="40dp"> <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="- 100 ml"
-            android:textColor="#AAAAAA"
-            android:textSize="12sp"/>
+            android:layout_marginEnd="40dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="- 100 ml"
+                android:textColor="#AAAAAA"
+                android:textSize="12sp"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -107,6 +110,7 @@
                 android:textColor="#FFFFFF"
                 android:textSize="32sp"
                 android:layout_marginTop="8dp"/>
+
         </LinearLayout>
 
         <LinearLayout
@@ -131,14 +135,17 @@
                 android:text="+"
                 android:textColor="#FFFFFF"
                 android:textSize="40sp"/>
+
         </LinearLayout>
+
     </LinearLayout>
 
     <EditText
         android:id="@+id/editPesoAtual"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_marginTop="48dp" android:hint="Digite seu Peso atual (kg)"
+        android:layout_marginTop="48dp"
+        android:hint="Digite seu Peso atual (kg)"
         android:textColorHint="#888888"
         android:textColor="#FFFFFF"
         android:inputType="numberDecimal"

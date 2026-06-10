@@ -8,6 +8,7 @@ import android.widget.LinearLayout
 import com.example.progressa.network.LeituraActivity
 import com.example.progressa.network.MateriaActivity
 import com.example.progressa.network.EstudoActivity
+import com.example.progressa.HidratacaoActivity
 
 class HomeActivity : AppCompatActivity() {
 
@@ -50,6 +51,20 @@ class HomeActivity : AppCompatActivity() {
                 )
 
             startActivity(intent)
+        }
+        val cardHidratacao =
+            findViewById<LinearLayout>(
+                R.id.cardHidratacao
+            )
+
+        cardHidratacao.setOnClickListener {
+
+            startActivity(
+                Intent(
+                    this,
+                    HidratacaoActivity::class.java
+                )
+            )
         }
         val cardEstudar =
             findViewById<LinearLayout>(
