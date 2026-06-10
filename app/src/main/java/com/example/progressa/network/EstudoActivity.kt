@@ -4,113 +4,64 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.progressa.R
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Locale
 import kotlin.math.ceil
 
 class EstudoActivity : AppCompatActivity() {
 
     private lateinit var txtCronometro: TextView
-
     private lateinit var txtHoje: TextView
-
-    private lateinit var txtSemana: TextView
-
     private lateinit var txtSequencia: TextView
 
     private var segundos = 0
-
     private var rodando = false
 
-    private val handler =
-        Handler(
-            Looper.getMainLooper()
-        )
+    private val handler = Handler(Looper.getMainLooper())
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
 
-        setContentView(
-            R.layout.activity_estudo
-        )
+        setContentView(R.layout.activity_estudo)
 
-        txtCronometro =
-            findViewById(
-                R.id.txtCronometro
-            )
+        findViewById<ImageButton>(R.id.btnVoltar).setOnClickListener {
+            finish()
+        }
 
-        txtHoje =
-            findViewById(
-                R.id.txtHoje
-            )
+        txtCronometro = findViewById(R.id.txtCronometro)
+        txtHoje = findViewById(R.id.txtHoje)
+        txtSequencia = findViewById(R.id.txtSequencia)
 
-        txtSemana =
-            findViewById(
-                R.id.txtSemana
-            )
+        val btnIniciar = findViewById<Button>(R.id.btnIniciar)
+        val btnPausar = findViewById<Button>(R.id.btnPausar)
+        val btnFinalizar = findViewById<Button>(R.id.btnFinalizar)
 
-        txtSequencia =
-            findViewById(
-                R.id.txtSequencia
-            )
+        val prefs = getSharedPreferences("ESTUDO", MODE_PRIVATE)
 
-        val prefs =
-            getSharedPreferences(
-                "ESTUDO",
-                MODE_PRIVATE
-            )
+        val minutosHoje = prefs.getInt("MINUTOS_HOJE", 0)
 
-        val minutosHoje =
-            prefs.getInt(
-                "MINUTOS_HOJE",
-                0
-            )
-
-        val minutosSemana =
-            prefs.getInt(
-                "MINUTOS_SEMANA",
-                0
-            )
-
-        val sequencia =
-            prefs.getInt(
-                "SEQUENCIA",
-                0
-            )
+        val diasEstudados =
+            prefs.getStringSet(
+                "DIAS_ESTUDADOS",
+                mutableSetOf()
+            ) ?: mutableSetOf()
 
         txtHoje.text =
             "Hoje: $minutosHoje min"
 
-        txtSemana.text =
-            "Semana: $minutosSemana min"
-
         txtSequencia.text =
-            "🔥 Sequência: $sequencia dias"
-
-        val btnIniciar =
-            findViewById<Button>(
-                R.id.btnIniciar
-            )
-
-        val btnPausar =
-            findViewById<Button>(
-                R.id.btnPausar
-            )
-
-        val btnFinalizar =
-            findViewById<Button>(
-                R.id.btnFinalizar
-            )
+            "🔥 ${diasEstudados.size} dias estudados esta semana"
 
         btnIniciar.setOnClickListener {
-
             rodando = true
         }
 
         btnPausar.setOnClickListener {
-
             rodando = false
         }
 
@@ -119,9 +70,7 @@ class EstudoActivity : AppCompatActivity() {
             rodando = false
 
             val minutosSessao =
-                ceil(
-                    segundos / 60.0
-                ).toInt()
+                ceil(segundos / 60.0).toInt()
 
             val hojeAtual =
                 prefs.getInt(
@@ -129,41 +78,38 @@ class EstudoActivity : AppCompatActivity() {
                     0
                 )
 
-            val semanaAtual =
-                prefs.getInt(
-                    "MINUTOS_SEMANA",
-                    0
+            val diasAtualizados =
+                diasEstudados.toMutableSet()
+
+            val formato =
+                SimpleDateFormat(
+                    "yyyyMMdd",
+                    Locale.getDefault()
                 )
 
-            val sequenciaAtual =
-                prefs.getInt(
-                    "SEQUENCIA",
-                    0
+            val hoje =
+                formato.format(
+                    Calendar.getInstance().time
                 )
+
+            diasAtualizados.add(hoje)
 
             prefs.edit()
                 .putInt(
                     "MINUTOS_HOJE",
                     hojeAtual + minutosSessao
                 )
-                .putInt(
-                    "MINUTOS_SEMANA",
-                    semanaAtual + minutosSessao
-                )
-                .putInt(
-                    "SEQUENCIA",
-                    sequenciaAtual + 1
+                .putStringSet(
+                    "DIAS_ESTUDADOS",
+                    diasAtualizados
                 )
                 .apply()
 
             txtHoje.text =
                 "Hoje: ${hojeAtual + minutosSessao} min"
 
-            txtSemana.text =
-                "Semana: ${semanaAtual + minutosSessao} min"
-
             txtSequencia.text =
-                "🔥 Sequência: ${sequenciaAtual + 1} dias"
+                "🔥 ${diasAtualizados.size} dias estudados esta semana"
 
             segundos = 0
 
@@ -176,13 +122,11 @@ class EstudoActivity : AppCompatActivity() {
     private fun iniciarCronometro() {
 
         handler.post(
-
             object : Runnable {
 
                 override fun run() {
 
                     if (rodando) {
-
                         segundos++
                     }
 
@@ -199,14 +143,9 @@ class EstudoActivity : AppCompatActivity() {
 
     private fun atualizarCronometro() {
 
-        val horas =
-            segundos / 3600
-
-        val minutos =
-            (segundos % 3600) / 60
-
-        val seg =
-            segundos % 60
+        val horas = segundos / 3600
+        val minutos = (segundos % 3600) / 60
+        val seg = segundos % 60
 
         txtCronometro.text =
             String.format(
@@ -218,11 +157,8 @@ class EstudoActivity : AppCompatActivity() {
     }
 
     override fun onDestroy() {
-
         super.onDestroy()
 
-        handler.removeCallbacksAndMessages(
-            null
-        )
+        handler.removeCallbacksAndMessages(null)
     }
 }

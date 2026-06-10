@@ -1,14 +1,13 @@
 package com.example.progressa
 
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import android.content.Intent
+import android.os.Bundle
 import android.widget.LinearLayout
+import androidx.appcompat.app.AppCompatActivity
 
+import com.example.progressa.network.EstudoActivity
 import com.example.progressa.network.LeituraActivity
 import com.example.progressa.network.MateriaActivity
-import com.example.progressa.network.EstudoActivity
-import com.example.progressa.HidratacaoActivity
 
 class HomeActivity : AppCompatActivity() {
 
@@ -16,9 +15,9 @@ class HomeActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
 
-        setContentView(
-            R.layout.activity_home
-        )
+        setContentView(R.layout.activity_home)
+
+        // LEITURA
 
         val cardLeitura =
             findViewById<LinearLayout>(
@@ -27,15 +26,15 @@ class HomeActivity : AppCompatActivity() {
 
         cardLeitura.setOnClickListener {
 
-            val intent =
+            startActivity(
                 Intent(
                     this,
                     LeituraActivity::class.java
                 )
-
-            startActivity(intent)
+            )
         }
 
+        // MATÉRIAS
 
         val cardMateria =
             findViewById<LinearLayout>(
@@ -44,14 +43,16 @@ class HomeActivity : AppCompatActivity() {
 
         cardMateria.setOnClickListener {
 
-            val intent =
+            startActivity(
                 Intent(
                     this,
                     MateriaActivity::class.java
                 )
-
-            startActivity(intent)
+            )
         }
+
+        // HIDRATAÇÃO
+
         val cardHidratacao =
             findViewById<LinearLayout>(
                 R.id.cardHidratacao
@@ -66,6 +67,9 @@ class HomeActivity : AppCompatActivity() {
                 )
             )
         }
+
+        // ESTUDOS
+
         val cardEstudar =
             findViewById<LinearLayout>(
                 R.id.cardEstudar
@@ -77,6 +81,23 @@ class HomeActivity : AppCompatActivity() {
                 Intent(
                     this,
                     EstudoActivity::class.java
+                )
+            )
+        }
+
+        // BOLETIM
+
+        val cardBoletim =
+            findViewById<LinearLayout>(
+                R.id.cardBoletim
+            )
+
+        cardBoletim.setOnClickListener {
+
+            startActivity(
+                Intent(
+                    this,
+                    DashboardActivity::class.java
                 )
             )
         }
