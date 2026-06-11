@@ -1,156 +1,172 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="24dp"
     android:background="@drawable/bg_login">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp">
-
-        <TextView
-            android:id="@+id/btnVoltar"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="@drawable/fundo_translucido"
-            android:text="←"
-            android:textColor="#8B5CF6"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:includeFontPadding="false"
-            android:paddingBottom="4dp"
-            android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"
-            android:clickable="true"/>
-
-        <ImageView
-            android:layout_width="140dp"
-            android:layout_height="40dp"
-            android:layout_centerInParent="true"
-            android:scaleType="fitCenter"
-            android:src="@drawable/logo_progressa"/>
-
-    </RelativeLayout>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Hidratação"
-        android:textColor="#FFFFFF"
-        android:textSize="28sp"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:layout_marginBottom="24dp"/>
-
-    <TextView
-        android:id="@+id/txtAguaBebida"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/fundo_translucido"
-        android:paddingHorizontal="40dp"
-        android:paddingVertical="16dp"
-        android:text="0 ml"
-        android:textColor="#FFFFFF"
-        android:textSize="28sp"
-        android:textStyle="bold"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="32dp"/>
-
-    <ProgressBar
-        android:id="@+id/progressBarAgua"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:progress="0"
-        android:progressTint="#8B5CF6"
-        android:scaleY="3"
-        android:layout_marginBottom="16dp"/>
-
-    <TextView
-        android:id="@+id/txtStatusAgua"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Defina seu peso abaixo para calcular a meta"
-        android:textColor="#E0E0E0"
-        android:textSize="14sp"
-        android:gravity="center"
-        android:layout_marginBottom="40dp"/>
+    <!-- CABEÇALHO -->
 
     <LinearLayout
+        android:id="@+id/header"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="90dp"
+        android:background="#CC000000"
+        android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:gravity="center">
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
-            android:id="@+id/btnMenosAgua"
-            android:layout_width="110dp"
-            android:layout_height="110dp"
-            android:orientation="vertical"
-            android:background="@drawable/fundo_translucido"
-            android:gravity="center"
-            android:clickable="true"
-            android:layout_marginEnd="40dp">
+        <ImageButton
+            android:id="@+id/btnVoltar"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:background="@drawable/bg_btn_voltar"
+            android:contentDescription="Voltar"
+            android:src="@drawable/ic_voltar"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="- 100 ml"
-                android:textColor="#AAAAAA"
-                android:textSize="12sp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="—"
-                android:textColor="#FFFFFF"
-                android:textSize="32sp"
-                android:layout_marginTop="8dp"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/btnMaisAgua"
-            android:layout_width="110dp"
-            android:layout_height="110dp"
-            android:orientation="vertical"
-            android:background="@drawable/fundo_translucido"
-            android:gravity="center"
-            android:clickable="true">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="+ 100 ml"
-                android:textColor="#AAAAAA"
-                android:textSize="12sp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="+"
-                android:textColor="#FFFFFF"
-                android:textSize="40sp"/>
-
-        </LinearLayout>
+        <ImageView
+            android:id="@+id/imgLogo"
+            android:layout_width="180dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="20dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/logo_progressa"/>
 
     </LinearLayout>
 
-    <EditText
-        android:id="@+id/editPesoAtual"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginTop="48dp"
-        android:hint="Digite seu Peso atual (kg)"
-        android:textColorHint="#888888"
-        android:textColor="#FFFFFF"
-        android:inputType="numberDecimal"
-        android:background="@drawable/fundo_translucido"
-        android:padding="16dp"
-        android:textAlignment="center"/>
+    <!-- CONTEÚDO -->
 
-</LinearLayout>
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:padding="24dp"
+        app:layout_constraintTop_toBottomOf="@id/header"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Hidratação"
+            android:textColor="#FFFFFF"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginBottom="24dp"/>
+
+        <TextView
+            android:id="@+id/txtAguaBebida"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/fundo_translucido"
+            android:paddingHorizontal="40dp"
+            android:paddingVertical="16dp"
+            android:text="0 ml"
+            android:textColor="#FFFFFF"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="32dp"/>
+
+        <ProgressBar
+            android:id="@+id/progressBarAgua"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:progress="0"
+            android:progressTint="#8B5CF6"
+            android:scaleY="3"
+            android:layout_marginBottom="16dp"/>
+
+        <TextView
+            android:id="@+id/txtStatusAgua"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Defina seu peso abaixo para calcular a meta"
+            android:textColor="#E0E0E0"
+            android:textSize="14sp"
+            android:gravity="center"
+            android:layout_marginBottom="40dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <LinearLayout
+                android:id="@+id/btnMenosAgua"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                android:layout_marginEnd="40dp"
+                android:background="@drawable/fundo_translucido"
+                android:clickable="true"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="- 100 ml"
+                    android:textColor="#AAAAAA"
+                    android:textSize="12sp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="—"
+                    android:textColor="#FFFFFF"
+                    android:textSize="32sp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/btnMaisAgua"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                android:background="@drawable/fundo_translucido"
+                android:clickable="true"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="+ 100 ml"
+                    android:textColor="#AAAAAA"
+                    android:textSize="12sp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="+"
+                    android:textColor="#FFFFFF"
+                    android:textSize="40sp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/editPesoAtual"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="48dp"
+            android:background="@drawable/fundo_translucido"
+            android:hint="Digite seu Peso atual (kg)"
+            android:inputType="numberDecimal"
+            android:padding="16dp"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#888888"/>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

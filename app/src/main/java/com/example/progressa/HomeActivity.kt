@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.progressa.network.EstudoActivity
 import com.example.progressa.network.LeituraActivity
 import com.example.progressa.network.MateriaActivity
+import com.example.progressa.network.DashboardActivity
 
 class HomeActivity : AppCompatActivity() {
 

@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.progressa.R
 import com.example.progressa.adapter.LeituraAdapter
 import com.example.progressa.model.Leitura
+import com.example.progressa.util.DashboardManager
 
 class LeituraActivity : AppCompatActivity() {
 
@@ -21,7 +22,6 @@ class LeituraActivity : AppCompatActivity() {
             R.layout.activity_leitura
         )
 
-        // voltar
         val voltar =
             findViewById<ImageButton>(
                 R.id.btnVoltar
@@ -31,8 +31,6 @@ class LeituraActivity : AppCompatActivity() {
             finish()
         }
 
-
-        // novo livro
         val novoLivro =
             findViewById<Button>(
                 R.id.btnNovoLivro
@@ -48,38 +46,49 @@ class LeituraActivity : AppCompatActivity() {
 
         }
 
-
-        // recycler
         val recycler =
             findViewById<RecyclerView>(
                 R.id.recyclerLeitura
             )
 
-
         val lista = mutableListOf(
 
             Leitura(
-                id=1,
-                livro="Dom Casmurro",
-                autor="Machado de Assis",
-                inicio="01/05/2026",
-                termino="29/12/2025",
-                paginaAtual="35/208",
-                progresso=25,
-                anotacao="Capítulo interessante"
+                id = 1,
+                livro = "Dom Casmurro",
+                autor = "Machado de Assis",
+                inicio = "01/05/2026",
+                termino = "29/12/2025",
+                paginaAtual = "35/208",
+                progresso = 25,
+                anotacao = "Capítulo interessante"
             ),
 
             Leitura(
-                id=2,
-                livro="1984",
-                autor="George Orwell",
-                inicio="03/05/2026",
-                termino="20/01/2026",
-                paginaAtual="80/240",
-                progresso=40,
-                anotacao="Mundo distópico"
+                id = 2,
+                livro = "1984",
+                autor = "George Orwell",
+                inicio = "03/05/2026",
+                termino = "20/01/2026",
+                paginaAtual = "240/240",
+                progresso = 100,
+                anotacao = "Livro concluído"
             )
 
+        )
+
+        // ============================
+        // ENVIA DADOS PARA DASHBOARD
+        // ============================
+
+        val livrosConcluidos =
+            lista.count {
+                it.progresso >= 100
+            }
+
+        DashboardManager.salvarLivros(
+            this,
+            livrosConcluidos
         )
 
         recycler.layoutManager =
@@ -102,6 +111,5 @@ class LeituraActivity : AppCompatActivity() {
 
         recycler.adapter =
             LeituraAdapter(lista)
-
     }
 }

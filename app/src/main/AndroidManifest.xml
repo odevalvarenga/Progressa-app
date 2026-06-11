@@ -31,7 +31,8 @@
         <activity android:name=".network.MateriaActivity"/>
         <activity android:name=".network.EstudoActivity"/>
         <activity android:name=".HidratacaoActivity" />
-        <activity android:name=".DashboardActivity"/>
+        <activity android:name=".network.DashboardActivity"/>
+        <activity android:name=".network.NovaMateriaActivity"/>
 
     </application>
 

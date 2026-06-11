@@ -8,6 +8,7 @@ import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.progressa.R
+import com.example.progressa.util.DashboardManager
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
@@ -43,7 +44,10 @@ class EstudoActivity : AppCompatActivity() {
 
         val prefs = getSharedPreferences("ESTUDO", MODE_PRIVATE)
 
-        val minutosHoje = prefs.getInt("MINUTOS_HOJE", 0)
+        val minutosHoje = prefs.getInt(
+            "MINUTOS_HOJE",
+            0
+        )
 
         val diasEstudados =
             prefs.getStringSet(
@@ -78,6 +82,9 @@ class EstudoActivity : AppCompatActivity() {
                     0
                 )
 
+            val totalMinutos =
+                hojeAtual + minutosSessao
+
             val diasAtualizados =
                 diasEstudados.toMutableSet()
 
@@ -97,7 +104,7 @@ class EstudoActivity : AppCompatActivity() {
             prefs.edit()
                 .putInt(
                     "MINUTOS_HOJE",
-                    hojeAtual + minutosSessao
+                    totalMinutos
                 )
                 .putStringSet(
                     "DIAS_ESTUDADOS",
@@ -105,8 +112,14 @@ class EstudoActivity : AppCompatActivity() {
                 )
                 .apply()
 
+            // ENVIA TEMPO REAL EM SEGUNDOS PARA DASHBOARD
+            DashboardManager.salvarTempo(
+                this,
+                segundos
+            )
+
             txtHoje.text =
-                "Hoje: ${hojeAtual + minutosSessao} min"
+                "Hoje: $totalMinutos min"
 
             txtSequencia.text =
                 "🔥 ${diasAtualizados.size} dias estudados esta semana"
@@ -143,9 +156,14 @@ class EstudoActivity : AppCompatActivity() {
 
     private fun atualizarCronometro() {
 
-        val horas = segundos / 3600
-        val minutos = (segundos % 3600) / 60
-        val seg = segundos % 60
+        val horas =
+            segundos / 3600
+
+        val minutos =
+            (segundos % 3600) / 60
+
+        val seg =
+            segundos % 60
 
         txtCronometro.text =
             String.format(

@@ -1,14 +1,16 @@
 package com.example.progressa.network
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import android.widget.ImageButton
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.progressa.R
 import com.example.progressa.adapter.MateriaAdapter
 import com.example.progressa.model.Materia
+import com.example.progressa.util.DashboardManager
 
 class MateriaActivity : AppCompatActivity() {
 
@@ -71,7 +73,19 @@ class MateriaActivity : AppCompatActivity() {
                 01/05
                 """.trimIndent()
             )
+        )
 
+        // MÉDIA PARA DASHBOARD
+
+        val mediaGeral =
+            lista
+                .map { it.media }
+                .average()
+                .toFloat()
+
+        DashboardManager.salvarMedia(
+            this,
+            mediaGeral
         )
 
         recycler.layoutManager =
@@ -86,16 +100,19 @@ class MateriaActivity : AppCompatActivity() {
         recycler.adapter =
             MateriaAdapter(lista)
 
-        findViewById<android.widget.Button>(
+        // ABRIR TELA NOVA MATÉRIA
+
+        findViewById<Button>(
             R.id.btnNovaMateria
         ).setOnClickListener {
 
-            Toast.makeText(
-                this,
-                "Adicionar matéria",
-                Toast.LENGTH_SHORT
-            ).show()
+            val intent =
+                Intent(
+                    this,
+                    NovaMateriaActivity::class.java
+                )
 
+            startActivity(intent)
         }
     }
 }
